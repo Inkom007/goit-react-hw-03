@@ -1,0 +1,33 @@
+.wrapper {
+  padding: 10px;
+  margin-top: 30px;
+  width: 300px;
+  border: 1px solid rgb(51, 51, 105);
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.userWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.text {
+  font-family: "Courier New", Courier, monospace;
+}
+
+.span {
+  margin-right: 8px;
+}
+
+.button {
+  border: none;
+  font-family: "Courier New", Courier, monospace;
+  background-color: rgb(101, 101, 131);
+  border-radius: 4px;
+  color: aliceblue;
+  margin-top: 30px;
+  width: 80px;
+  height: 30px;
+}
