@@ -1,27 +1,24 @@
 import s from "./ContactForm.module.css";
-import { Field, Form, Formik } from "formik";
+import { ErrorMessage, Field, Form, Formik } from "formik";
 
-const ContactForm = ({ initialValues, addContact }) => {
-  const handleSubmit = (data, actions) => {
-    addContact({
-      id: Date.now(),
-      name: data.name,
-      number: data.number,
-    });
-    actions.resetForm();
-  };
-
+const ContactForm = ({ initialValues, handleSubmit, registerSchema }) => {
   return (
     <div className={s.wrapper}>
-      <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+      <Formik
+        validationSchema={registerSchema}
+        initialValues={initialValues}
+        onSubmit={handleSubmit}
+      >
         <Form className={s.form}>
           <label>
-            <span className={s.label}>Name</span>
+            <span className={s.text}>Name</span>
             <Field className={s.input} name="name"></Field>
+            <ErrorMessage name="name" component="span" className={s.error} />
           </label>
           <label>
-            <span className={s.label}> Number</span>
+            <span className={s.text}> Number</span>
             <Field className={s.input} name="number"></Field>
+            <ErrorMessage name="number" component="span" className={s.error} />
           </label>
           <button type="submit" className={s.button}>
             Add contact

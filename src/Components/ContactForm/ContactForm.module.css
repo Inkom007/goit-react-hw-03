@@ -3,27 +3,25 @@
   margin-top: 30px;
   padding: 16px;
   width: 350px;
-  height: 200px;
+
   border-radius: 5px;
   background-color: rgb(51, 51, 105);
 }
 
 .form {
-  margin-top: 20px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
   align-items: center;
+  margin-top: 20px;
 }
 
-.label {
+.text {
   font-family: "Courier New", Courier, monospace;
   color: aliceblue;
-  display: flex;
-  flex-direction: column;
 }
 
 .input {
+  display: flex;
   width: 250px;
   height: 30px;
 }
@@ -36,4 +34,9 @@
   border-radius: 4px;
   background-color: rgb(101, 101, 131);
   padding: 10px;
+}
+
+.error {
+  color: red;
+  font-family: "Courier New", Courier, monospace;
 }
