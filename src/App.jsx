@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import ContactForm from "./components/ContactForm/ContactForm";
-import ContactList from "./components/ContactList/ContactList";
-import SearchBox from "./components/SearchBox/SearchBox";
+import ContactForm from "./components 1234/ContactForm/ContactForm";
+import ContactList from "./components 1234/ContactList/ContactList";
+import SearchBox from "./components 1234/SearchBox/SearchBox";
 import initialContacts from "./contacts.json";
 import * as Yup from "yup";
 
