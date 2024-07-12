@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ContactForm from "./Components/ContactForm/ContactForm";
 import ContactList from "./Components/ContactList/ContactList";
 import SearchBox from "./Components/SearchBox/SearchBox";
@@ -7,6 +7,20 @@ import * as Yup from "yup";
 
 const App = () => {
   const [contacts, setContacts] = useState(initialContacts);
+  // LOCAL STORAGE  //
+
+  useEffect(() => {
+    const savedContacts = JSON.parse(localStorage.getItem("contacts"));
+    if (savedContacts) {
+      setContacts(savedContacts);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("contacts", JSON.stringify(contacts));
+  }, [contacts]);
+
+  // ADDING A NEW CONTACT //
 
   const addContact = (newContact) => {
     setContacts((prevContact) => {
@@ -19,6 +33,17 @@ const App = () => {
     number: "",
   };
 
+  const handleSubmit = (data, actions) => {
+    addContact({
+      id: Date.now(),
+      name: data.name,
+      number: data.number,
+    });
+    actions.resetForm();
+  };
+
+  // VALIDATION //
+
   const registerSchema = Yup.object({
     name: Yup.string()
       .required("Required")
@@ -30,14 +55,7 @@ const App = () => {
       .max(50, "Too long!"),
   });
 
-  const handleSubmit = (data, actions) => {
-    addContact({
-      id: Date.now(),
-      name: data.name,
-      number: data.number,
-    });
-    actions.resetForm();
-  };
+  // DELETING CONTACTS //
 
   const deleteContact = (contactId) => {
     setContacts((prevContact) => {
